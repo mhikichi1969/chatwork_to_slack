@@ -1,0 +1,24 @@
+参考
+https://qiita.com/JunkiHiroi/items/4fb577e8a8912a7ffada
+
+●user.csvの作成
+コンタクトのユーザーから引っ張り出している。
+
+./chatwork_to_slack --generate-template -k 79c580b41c1ea07e5ff48ef98bbf8032
+
+●chatworkからダウンロード
+ダウンロードしたい部屋を開いておいて、get_chatwork_room_message_logs_by_console.js をchromeのデベロッパーモードのコンソールから実行
+コンソールに全データが出力され最後に出てくるcopyボタンを押すとクリップボードにコピーされる。
+chatwork_to_slack/chatwork_to_slack_data の ルーム番号.csv に保存。ルーム番号はなんでもよい。
+
+●slackインポート用のcsvに変換
+元ファイルは　goodbye_chatwork の HC_HW.txtで置く（今のところ決め打ち）
+
+./chatwork_to_slack -i dummy -p dummy -x ルーム番号 -c 出力先
+
+一皮剥いたファイルが chatwork_to_slack/chatwork_to_slack_data/ルーム番号.csvに保存される（拡張子csvだが、csvではない）
+出力先.csvがslackインポート用のファイル
+
+    ID,PASSは内部的には使わないので、dummyで良し。
+    ルーム番号は先の番号を使う。
+

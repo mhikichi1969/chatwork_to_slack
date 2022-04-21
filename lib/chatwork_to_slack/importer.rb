@@ -12,7 +12,7 @@ module ChatWorkToSlack
       @chatwork_api_key = args[:chatwork_api_key]
       @gcw = gcw
 
-      gcw.login
+      #gcw.login
 
       if !room_id || !channel
         chatwork_list
@@ -29,14 +29,14 @@ module ChatWorkToSlack
 
     def create_workdir
       unless File.exists?(workdir)
-        gcw.info "mkdir #{workdir}"
+        #gcw.info "mkdir #{workdir}"
         FileUtils.mkdir_p(workdir)
       end
     end
 
     def export
       if export_files
-        gcw.export_csv(room_id, chatwork_csv_path, { include_file: true, dir: chatwork_files_path })
+        gcw.export_csv(room_id, chatwork_csv_path, { include_file: false, dir: chatwork_files_path })
       else
         gcw.export_csv(room_id, chatwork_csv_path)
       end

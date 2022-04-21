@@ -33,7 +33,8 @@ module ChatWorkToSlack
       CSV.generate do |csv|
         csv << ['chatwork_account_id', 'chatwork_name', 'slack_name']
         chatwork_users.each do |u|
-          csv << [u['account_id'], u['name'], u['chatwork_id']]
+          #csv << [u['account_id'], u['name'], u['chatwork_id']]
+          csv << [u['account_id'], u['name'], '＠'+u['name']]
         end
       end
     end

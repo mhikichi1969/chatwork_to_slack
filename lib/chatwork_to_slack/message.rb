@@ -23,11 +23,13 @@ module ChatWorkToSlack
     end
 
     def name
+      #print @name,"\n"
       if @name.match(/\A[\d]+\Z/)
         user = @users.find{|u| u[:chatwork_account_id] == @name.to_i}
       else
         user = @users.find{|u| u[:chatwork_name] == @name}
       end
+      #print user,"\n"
 
       if !!user
         user[:slack_name] || @name
@@ -39,6 +41,7 @@ module ChatWorkToSlack
     def text
       options = { users: users }
       filters.inject(@text) {|text, filter| filter.call(text, options)}
+      #filters.inject(@text) {|text, filter| print filter}
     end
 
     def filters

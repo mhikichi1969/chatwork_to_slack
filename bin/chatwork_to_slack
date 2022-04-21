@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 
-require "chatwork_to_slack"
+require_relative "../lib/chatwork_to_slack.rb"
+require_relative "../lib/chatwork_to_slack/importer.rb"
+require_relative "../lib/chatwork_to_slack/message.rb"
 require "optparse"
 require "fileutils"
 require "chatwork"
-require "goodbye_chatwork"
+require_relative "../../goodbye_chatwork/lib/goodbye_chatwork.rb"
 require "csv"
 
 
@@ -57,7 +59,6 @@ users =
     gcw.info '[warning] users.csv not found'
     []
   end
-
 ChatWorkToSlack::Importer.new(
   gcw,
   room_id: opts['x'] || opts['e'],

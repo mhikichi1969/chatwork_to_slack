@@ -15,6 +15,8 @@ module ChatWorkToSlack
       end
 
       def replace_to(text)
+        print data,"\n"
+        print text,"\n"
         if data = text.match(/(\[To:([\d]+)\](?:[\w\s]+さん)?)/)
           to_text = data[0]
           account_id = data[2]
