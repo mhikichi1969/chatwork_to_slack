@@ -1,9 +1,9 @@
-require "chatwork_to_slack/filters/dtext"
-require "chatwork_to_slack/filters/emoji"
-require "chatwork_to_slack/filters/picon"
-require "chatwork_to_slack/filters/pre"
-require "chatwork_to_slack/filters/reply"
-require "chatwork_to_slack/filters/quote"
+require_relative "../chatwork_to_slack/filters/dtext"
+require_relative "../chatwork_to_slack/filters/emoji"
+require_relative "../chatwork_to_slack/filters/picon"
+require_relative "../chatwork_to_slack/filters/pre"
+require_relative "../chatwork_to_slack/filters/reply"
+require_relative "../chatwork_to_slack/filters/quote"
 
 module ChatWorkToSlack
   class Message
@@ -39,6 +39,7 @@ module ChatWorkToSlack
     end
 
     def text
+      #print "\nMESSAGE ",@text,"\nMESSAGE END\n"
       options = { users: users }
       filters.inject(@text) {|text, filter| filter.call(text, options)}
       #filters.inject(@text) {|text, filter| print filter}

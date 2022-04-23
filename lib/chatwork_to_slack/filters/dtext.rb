@@ -21,6 +21,7 @@ module ChatWorkToSlack
       }
 
       def self.call(text, options)
+        #print text
         text.scan(/(\[dtext:([\w]+)\])/).each do |dtext|
           if t = TEMPLATE[dtext[1].to_sym]
             text.gsub!(dtext[0], t)
